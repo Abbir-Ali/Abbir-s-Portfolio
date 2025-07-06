@@ -66,17 +66,18 @@ export async function sendContactEmail(data: ContactFormData) {
       demo: false,
       emailId: emailResult.data?.id,
     }
-  } catch (error: any) {
-    console.error("❌ Email sending failed:", error)
+  } catch (error: unknown) {
+    const err = error as Error;
+    console.error("❌ Email sending failed:", err);
 
     // Provide helpful error messages
-    if (error.message?.includes("API key")) {
+    if (err.message?.includes("API key")) {
       throw new Error("Invalid Resend API key. Please check your RESEND_API_KEY environment variable.")
     }
-    if (error.message?.includes("domain") || error.message?.includes("from")) {
+    if (err.message?.includes("domain") || err.message?.includes("from")) {
       throw new Error("Email domain not verified. Please verify your domain in Resend dashboard or use the default Resend domain.")
     }
-    if (error.message?.includes("rate limit")) {
+    if (err.message?.includes("rate limit")) {
       throw new Error("Rate limit exceeded. Please try again in a few minutes.")
     }
 
