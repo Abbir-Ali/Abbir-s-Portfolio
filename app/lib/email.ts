@@ -12,7 +12,9 @@ interface ContactFormData {
 // Initialize Resend with better error handling
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
-export async function sendContactEmail(data: ContactFormData) {
+export async function sendContactEmail(
+  data: ContactFormData
+): Promise<{ success: boolean; demo: boolean; emailId?: string }> {
   try {
     if (!resend) {
       // Demo mode - detailed logging for testing

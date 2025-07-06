@@ -2,7 +2,15 @@
 
 import { sendContactEmail } from "../lib/email"
 
-export async function submitContactForm(prevState: unknown, formData: FormData) {
+interface ContactFormState {
+  success: boolean;
+  message: string;
+}
+
+export async function submitContactForm(
+  prevState: ContactFormState | undefined,
+  formData: FormData
+): Promise<ContactFormState> {
   try {
     const data = {
       name: formData.get("name") as string,
@@ -45,8 +53,9 @@ export async function submitContactForm(prevState: unknown, formData: FormData) 
       success: true,
       message: "🚀 Thank you for your message! I'll get back to you within 24 hours.",
     }
-  } catch (error) {
-    console.error("Contact form error:", error)
+  } catch (error: unknown) {
+    const err = error as Error;
+    console.error("Contact form error:", err)
     return {
       success: false,
       message:

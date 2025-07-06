@@ -8,8 +8,17 @@ import { submitContactForm } from "../actions/contact-action"
 import { useActionState } from "react"
 import { Loader2, CheckCircle, AlertCircle, Info } from "lucide-react"
 
+interface ContactFormState {
+  success: boolean;
+  message: string;
+}
+
 export default function ContactForm() {
-  const [state, action, isPending] = useActionState(submitContactForm, null)
+  const initialState: ContactFormState = { success: false, message: "" };
+  const action = async (state: ContactFormState, formData: FormData): Promise<ContactFormState> => {
+    return await submitContactForm(state, formData);
+  };
+  const [state, formAction, isPending] = useActionState(action, initialState);
 
   return (
     <div className="space-y-6">
@@ -25,7 +34,7 @@ export default function ContactForm() {
         </p>
       </div>
 
-      <form action={action} className="space-y-6">
+      <form action={formAction} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-gray-300">
