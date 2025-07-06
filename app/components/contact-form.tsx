@@ -22,18 +22,6 @@ export default function ContactForm() {
 
   return (
     <div className="space-y-6">
-      {/* Email Setup Status */}
-      <div className="bg-blue-900/20 border border-blue-500/20 text-blue-400 p-4 rounded-lg">
-        <div className="flex items-center gap-2 mb-2">
-          <Info className="w-5 h-5 flex-shrink-0" />
-          <span className="font-semibold">Email Integration Status</span>
-        </div>
-        <p className="text-sm">
-          The contact form is working. Email delivery status will be shown after you submit the form.<br />
-          See <code className="bg-blue-800/50 px-1 rounded">EMAIL_SETUP.md</code> for setup instructions.
-        </p>
-      </div>
-
       <form action={formAction} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
@@ -80,17 +68,17 @@ export default function ContactForm() {
               Project Type *
             </Label>
             <Select name="projectType" required>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                <SelectValue placeholder="Select project type" />
+              <SelectTrigger className="bg-white border-gray-700 text-black">
+                <SelectValue placeholder="Select project type" className="text-black" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="custom-theme">Custom Theme Development</SelectItem>
-                <SelectItem value="checkout-optimization">Checkout Optimization</SelectItem>
-                <SelectItem value="shopify-plus">Shopify Plus Migration</SelectItem>
-                <SelectItem value="app-development">App Development</SelectItem>
-                <SelectItem value="store-migration">Store Migration</SelectItem>
-                <SelectItem value="performance-optimization">Performance Optimization</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+              <SelectContent className="bg-white border-gray-700">
+                <SelectItem value="custom-theme" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Custom Theme Development</SelectItem>
+                <SelectItem value="checkout-optimization" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Checkout Optimization</SelectItem>
+                <SelectItem value="shopify-plus" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Shopify Plus Migration</SelectItem>
+                <SelectItem value="app-development" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">App Development</SelectItem>
+                <SelectItem value="store-migration" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Store Migration</SelectItem>
+                <SelectItem value="performance-optimization" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Performance Optimization</SelectItem>
+                <SelectItem value="other" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Other</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -101,15 +89,15 @@ export default function ContactForm() {
             Project Budget
           </Label>
           <Select name="budget">
-            <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-              <SelectValue placeholder="Select budget range" />
+            <SelectTrigger className="bg-white border-gray-700 text-black">
+              <SelectValue placeholder="Select budget range" className="text-black" />
             </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
-              <SelectItem value="under-5k">Under $5,000</SelectItem>
-              <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-              <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-              <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-              <SelectItem value="over-50k">Over $50,000</SelectItem>
+            <SelectContent className="bg-white border-gray-700">
+              <SelectItem value="under-5k" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Under $5,000</SelectItem>
+              <SelectItem value="5k-10k" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">$5,000 - $10,000</SelectItem>
+              <SelectItem value="10k-25k" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">$10,000 - $25,000</SelectItem>
+              <SelectItem value="25k-50k" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">$25,000 - $50,000</SelectItem>
+              <SelectItem value="over-50k" className="text-black data-[state=checked]:text-black data-[highlighted]:text-black">Over $50,000</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -139,7 +127,7 @@ export default function ContactForm() {
           )}
         </Button>
 
-        {state && (
+        {state && state.message && (
           <div
             className={`flex items-center gap-2 p-4 rounded-lg ${
               state.success
