@@ -266,7 +266,7 @@ export default function Portfolio() {
           <section className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6">
             <div className="flex items-center gap-3 mb-6">
               <MessageSquare className="w-6 h-6 text-green-400" />
-              <h2 className="text-2xl font-mono text-green-400">Let's Work Together</h2>
+              <h2 className="text-2xl font-mono text-green-400">Let&apos;s Work Together</h2>
             </div>
             <ContactForm />
           </section>
@@ -274,7 +274,7 @@ export default function Portfolio() {
           {/* Contact CTA */}
           <section className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl p-6 text-center">
             <h2 className="text-2xl font-mono mb-4">Ready to Elevate Your Shopify Store?</h2>
-            <p className="text-white/80 mb-6">Let's discuss your project and build something extraordinary together!</p>
+            <p className="text-white/80 mb-6">Let&apos;s discuss your project and build something extraordinary together!</p>
             <div className="flex gap-4 justify-center">
               <Button variant="secondary" className="bg-white text-black hover:bg-gray-200">
                 Schedule a Call

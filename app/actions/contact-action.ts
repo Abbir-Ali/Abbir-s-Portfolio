@@ -2,7 +2,7 @@
 
 import { sendContactEmail } from "../lib/email"
 
-export async function submitContactForm(prevState: any, formData: FormData) {
+export async function submitContactForm(prevState: unknown, formData: FormData) {
   try {
     const data = {
       name: formData.get("name") as string,
